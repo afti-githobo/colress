@@ -4,13 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Changlog
 
-[*] v0.1.0 - initial release (alpha)
+* v0.1.1 - bugfix re: running multiple simulation rounds in a single session potentially resulting in data skew; expose mulligan data (alpha)
+* v0.1.0 - initial release (alpha)
 
 ## Future plans
 
-[*] Tracking user-defined multi-card combos (ex. Lost Vacuum+Forest Seal Stone)
-[*] Tracking user-defined either/or sets (ex. Switch Cart or Escape Rope or Beach Court)
-[*] (eventually) Progressive simulation of post-turn-1 game states
+* Tracking user-defined multi-card combos (ex. Lost Vacuum+Forest Seal Stone)
+ Tracking user-defined either/or sets (ex. Switch Cart or Escape Rope or Beach Court)
+* (eventually) Progressive simulation of post-turn-1 game states
 
 ## Available Scripts
 
