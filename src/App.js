@@ -21,16 +21,17 @@ function App() {
 
   const hasData = useRef(false);
   // unique cards : how many times was this seen within starting hand + deck penetration?
-  const cardCounts = useRef(new Map());
+  const cardCounts = useRef();
   // unique cards : how many times was this prized?
-  const prizeCounts = useRef(new Map());
+  const prizeCounts = useRef();
   // valid starters : how many times was each of these starters seen?
-  const starters = useRef(new Map());
+  const starters = useRef();
   // valid starters : how many times was this the only available starter?
-  const soloStartersFound = useRef(new Map());
+  const soloStartersFound = useRef();
   // how many times did the simulation get a hand without a starter?
-  const mulliganOccurences = useRef(0);
+  const mulliganOccurences = useRef();
 
+  
 
   function Card(name, quantity, isStarter) {
     this.name = name;
@@ -257,7 +258,15 @@ function App() {
     }
 
     function experiment() {
+      cardCounts.current = new Map();
+      prizeCounts.current = new Map();
+      starters.current = new Map(); 
+      soloStartersFound.current = new Map();
+      mulliganOccurences.current = 0;
       populateDeck();
+
+
+
       for (let i = 0; i < simulations.current; i++) {
         shuffle();
 
@@ -333,25 +342,29 @@ function App() {
         <button onClick={experiment}>Commence the experiment!</button>
         <h3>Starters:</h3> {
           hasData.current && (
-            <table>
-              <tbody>
-                <tr>
-                  <th>Card</th>
-                  <th>Available</th>
-                  <th>Only starter</th>
-                </tr>
-                {
-                  sKeys.map((key) => { return(
-                    <tr key={`starter_tr_${key}`}>
-                      <td>{key}</td>
-                      <td>{`${starters.current.get(key)} / ${simulations.current} (${starters.current.get(key) / simulations.current * 100}%}`}</td>
-                      <td>{`${soloStartersFound.current.get(key)} / ${simulations.current} (${soloStartersFound.current.get(key) / simulations.current * 100}%)`}</td>
-                    </tr>
-                    )
-                  })
-                }
-              </tbody>          
-            </table>
+            <div>
+              Mulligans: {mulliganOccurences.current} / {simulations.current} ({mulliganOccurences.current / simulations.current}%)
+              <br />
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Card</th>
+                    <th>Available</th>
+                    <th>Only starter</th>
+                  </tr>
+                  {
+                    sKeys.map((key) => { return(
+                      <tr key={`starter_tr_${key}`}>
+                        <td>{key}</td>
+                        <td>{`${starters.current.get(key)} / ${simulations.current} (${starters.current.get(key) / simulations.current * 100}%}`}</td>
+                        <td>{`${soloStartersFound.current.get(key)} / ${simulations.current} (${soloStartersFound.current.get(key) / simulations.current * 100}%)`}</td>
+                      </tr>
+                      )
+                    })
+                  }
+                </tbody>          
+              </table>
+            </div>      
           )
         }
         <h3>Turn 1:</h3> {
@@ -413,17 +426,17 @@ function App() {
   }
 
   return (
-  <div className="App">
-    <h1>Colress's Experiment</h1>
-    <img src={colress} alt="Colress's Experiment v0.1.0α" />
-    <br />
-    <a href="https://github.com/afti-githobo/colress">Github</a>
-    <br />
-    <a href="https://ko-fi.com/iafishman">Tip me on Ko-fi if this software is useful and you want me to keep adding features</a>
-    <Config />
-    <Decklist />
-    <Data />
-  </div>
+    <div className="App">
+      <h1>Colress's Experiment v0.1.1α</h1>
+      <img src={colress} alt="Colress's Experiment" />
+      <br />
+      <a href="https://github.com/afti-githobo/colress">Github</a>
+      <br />
+      <a href="https://ko-fi.com/iafishman">Tip me on Ko-fi if this software is useful and you want me to keep adding features</a>
+      <Config />
+      <Decklist />
+      <Data />
+    </div>
   );
 }
 
