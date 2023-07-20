@@ -343,7 +343,7 @@ function App() {
         <h3>Starters:</h3> {
           hasData.current && (
             <div>
-              Mulligans: {mulliganOccurences.current} / {simulations.current} ({mulliganOccurences.current / simulations.current}%)
+              Mulligans: {mulliganOccurences.current} / {simulations.current} ({mulliganOccurences.current / simulations.current * 100}%)
               <br />
               <table>
                 <tbody>
@@ -427,7 +427,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Colress's Experiment v0.1.1α</h1>
+      <h1>Colress's Experiment v0.1.2α</h1>
       <img src={colress} alt="Colress's Experiment" />
       <br />
       <a href="https://github.com/afti-githobo/colress">Github</a>
