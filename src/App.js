@@ -21,15 +21,15 @@ function App() {
 
   const hasData = useRef(false);
   // unique cards : how many times was this seen within starting hand + deck penetration?
-  const cardCounts = useRef();
+  const cardCounts = useRef(new Map());
   // unique cards : how many times was this prized?
-  const prizeCounts = useRef();
+  const prizeCounts = useRef(new Map());
   // valid starters : how many times was each of these starters seen?
-  const starters = useRef();
+  const starters = useRef(new Map());
   // valid starters : how many times was this the only available starter?
-  const soloStartersFound = useRef();
+  const soloStartersFound = useRef(new Map());
   // how many times did the simulation get a hand without a starter?
-  const mulliganOccurences = useRef();
+  const mulliganOccurences = useRef(0);
 
   
 
