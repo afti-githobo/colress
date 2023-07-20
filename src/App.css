@@ -1,0 +1,12 @@
+.App {
+  
+  border: 16px outset;
+  border-image:   linear-gradient(to bottom right, purple, green) 2;
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 25px;
+  background-color: silver;
+}
